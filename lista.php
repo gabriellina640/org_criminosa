@@ -4,13 +4,12 @@ include "conexao.php";
 
 // Recebe o termo de busca via GET
 $busca = $_GET['busca'] ?? '';
-
-// Monta a query com filtro caso tenha busca
 if ($busca != '') {
-    $sql = "SELECT * FROM faccionado WHERE nome LIKE '%$busca%' ORDER BY nome";
+    $sql = "SELECT * FROM faccionado WHERE nome LIKE '%$busca%' OR faccao LIKE '%$busca%' ORDER BY nome";
 } else {
     $sql = "SELECT * FROM faccionado ORDER BY nome";
 }
+
 
 $resultado = mysqli_query($conn, $sql);
 ?>
@@ -31,7 +30,7 @@ $resultado = mysqli_query($conn, $sql);
   <!-- Form de busca -->
   <form method="GET" class="mb-3" action="lista.php">
     <div class="input-group">
-      <input type="text" name="busca" class="form-control" placeholder="Buscar pelo nome" value="<?php echo htmlspecialchars($busca); ?>">
+      <input type="text" name="busca" class="form-control" placeholder="Buscar" value="<?php echo htmlspecialchars($busca); ?>">
       <button class="btn btn-outline-primary" type="submit">Buscar</button>
       <a href="lista.php" class="btn btn-outline-secondary">Limpar</a>
     </div>
