@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
 
         $_SESSION['login'] = $user['login'];
 
-        header("Location: restrito.php");
+        header("Location: boasvindas.php");
         exit;
     } else {
         echo "Login ou senha inválidos!";

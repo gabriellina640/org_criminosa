@@ -10,4 +10,5 @@ if (!$conn) {
     die("Erro na conexão: " . mysqli_connect_error());
 }
 // conexão ok, não imprime nada aqui para não quebrar redirecionamento
+
 ?>
